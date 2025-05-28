@@ -4,7 +4,7 @@ Imports System.IO
 Public Module ParseCSV
     Public Function ReadCSV() As List(Of HealthRecord)
 
-        Dim healthFile As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plasma_donation_testdata.csv")
+        Dim healthFile As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "blood_donations.csv")
 
         If Not File.Exists(healthFile) Then
             Console.WriteLine("ERROR: CSV file not found!")
