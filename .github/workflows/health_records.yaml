@@ -1,6 +1,5 @@
-name: Data Sync
-on: 
-  push:
+name: Push Data to DB
+on:
   workflow_dispatch:
 
 jobs:
