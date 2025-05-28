@@ -1,0 +1,45 @@
+name: Delete Newest Entry from DynamoDB
+on:
+  workflow_dispatch:
+
+jobs:
+  delete-entry:
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      TABLE_NAME: vitalStatsVB
+
+    steps:
+    - name: Configure AWS CLI
+      run: |
+        aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+        aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+        aws configure set region $AWS_REGION
+
+    - name: Install jq (JSON processor)
+      run: sudo apt-get install -y jq
+
+    - name: Find and delete newest entry
+      run: |
+        ITEMS=$(aws dynamodb scan \
+          --table-name $TABLE_NAME \
+          --projection-expression "donation_date" \
+          --no-paginate \
+          | jq -r '.Items | sort_by(.donation_date.S) | reverse')
+
+        NEWEST_DATE=$(echo "$ITEMS" | jq -r '.[0].donation_date.S')
+
+        if [ -z "$NEWEST_DATE" ]; then
+          echo "No entries found in the table."
+          exit 0
+        fi
+
+        echo "Newest donation_date found: $NEWEST_DATE"
+
+        aws dynamodb delete-item \
+          --table-name $TABLE_NAME \
+          --key "{\"donation_date\": {\"S\": \"$NEWEST_DATE\"}}"
+
+        echo "Successfully deleted entry with donation_date: $NEWEST_DATE"
