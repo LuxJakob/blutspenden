@@ -18,6 +18,15 @@ Module Orchestrator
             Console.WriteLine($"ETL: Processes {healthData.Count} records.")
             ETLforJSON(healthData)
 
+            ' --- STEP 4: AWS Dynamo Database ---
+            Console.WriteLine("Initializing AWS client...")
+            Dim awsClient = New AwsClient()
+            Console.WriteLine("Pushing data to AWS...")
+            Dim jsonData As String = File.ReadAllText("health_data.json")
+            Dim jArray As JArray = JArray.Parse(jsonData)
+
+            awsClient.PushDataToDynamoDB(jArray)
+
         Catch ex As Exception
             Console.WriteLine($"Error in Orchestrator: {ex.Message}")
         End Try
