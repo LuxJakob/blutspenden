@@ -27,9 +27,13 @@ Public Module ParseCSV
 
                     Dim record As New HealthRecord With {
                         .Timestamp = DateTime.Parse(fields(0)),
-                        .Weight = Double.Parse(fields(1)),
-                        .AmountDonated = Integer.Parse(fields(2)),
-                        .BloodPressure = fields(3)
+                        .Donation_type = fields(1),
+                        .Weight = Double.Parse(fields(2)),
+                        .AmountDonated = Integer.Parse(fields(3)),
+                        .BloodPressure = fields(4),
+                        .Pulse = Integer.Parse(fields(5)),
+                        .Temperature = Double.Parse(fields(6)),
+                        .Hemoglobin = Double.Parse(fields(7))
                     }
                     records.Add(record)
                 End While
