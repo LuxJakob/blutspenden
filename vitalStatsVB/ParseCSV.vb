@@ -4,7 +4,7 @@ Imports System.IO
 Public Module ParseCSV
     Public Function ReadCSV() As List(Of HealthRecord)
 
-        Dim healthFile As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "blood_donations.csv")
+        Dim healthFile As String = "blood_donations.csv"
 
         If Not File.Exists(healthFile) Then
             Console.WriteLine("ERROR: CSV file not found!")
@@ -30,10 +30,11 @@ Public Module ParseCSV
                         .Donation_type = fields(1),
                         .Weight = Double.Parse(fields(2)),
                         .AmountDonated = Integer.Parse(fields(3)),
-                        .BloodPressure = fields(4),
-                        .Pulse = Integer.Parse(fields(5)),
-                        .Temperature = Double.Parse(fields(6)),
-                        .Hemoglobin = Double.Parse(fields(7))
+                        .Pulse = Integer.Parse(fields(4)),
+                        .Temperature = Double.Parse(fields(5)),
+                        .Hemoglobin = Double.Parse(fields(6)),
+                        .BloodPressureUpper = Integer.Parse(fields(7).Split("/"c)(0)),
+                        .BloodPressureLower = Integer.Parse(fields(7).Split("/"c)(1))
                     }
                     records.Add(record)
                 End While

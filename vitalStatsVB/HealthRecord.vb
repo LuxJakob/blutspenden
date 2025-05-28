@@ -23,19 +23,11 @@ Public Class HealthRecord
 
     <JsonIgnore>
     Public Property BloodPressure As String
+
     <JsonPropertyName("blood_pressure_upper")>
-    Public ReadOnly Property BloodPressureUpper As Integer
-        Get
-            If String.IsNullOrEmpty(BloodPressure) Then Return 0
-            Return Integer.Parse(BloodPressure.Split("/"c)(0))
-        End Get
-    End Property
+    Public Property BloodPressureUpper As Integer
+
     <JsonPropertyName("blood_pressure_lower")>
-    Public ReadOnly Property BloodPressureLower As Integer
-        Get
-            If String.IsNullOrEmpty(BloodPressure) Then Return 0
-            Return Integer.Parse(BloodPressure.Split("/"c)(1))
-        End Get
-    End Property
+    Public Property BloodPressureLower As Integer
 
 End Class

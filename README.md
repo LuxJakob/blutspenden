@@ -10,6 +10,7 @@ HEALTHDATA:
     "donation_type": "plasma",
     "weight_kg": 84.6,
     "amount_donated_ml": 857,
+    "blood_pressure": "120/30",
     "pulse": 74,
     "temperature": 36.1,
     "hemoglobin": 15.3
