@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blood Donation Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/grafana-dashboard@latest/dist/grafana-dashboard.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/grafana-dashboard@latest/dist/grafana-dashboard.min.css">
+</head>
+<body>
+    <div id="dashboard" style="width: 100%; height: 100vh;"></div>
+    <script>
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                const dashboard = new GrafanaDashboard({
+                    target: document.getElementById('dashboard'),
+                    dashboard: {
+                        title: "Blood Donation Dashboard",
+                        panels: [
+                            {
+                                title: "Donation Amount Over Time",
+                                type: "timeseries",
+                                datasource: { type: "inline", data: data },
+                                options: {
+                                    fieldConfig: {
+                                        defaults: {
+                                            unit: "ml"
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                title: "Weight vs Donation Amount",
+                                type: "xy-chart",
+                                datasource: { type: "inline", data: data },
+                                options: {
+                                    fieldConfig: {
+                                        defaults: {
+                                            unit: "ml"
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                });
+                dashboard.render();
+            });
+    </script>
+</body>
+</html>
