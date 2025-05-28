@@ -1,0 +1,50 @@
+name: Process Donation Data and Update Grafana
+
+on:
+  workflow_dispatch:
+
+jobs:
+  process-data:
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Download JSON data from AWS
+      run: |
+        aws dynamodb scan \
+          --table-name vitalStatsVB \
+          --output json > aws_current_state.json
+        echo "Downloaded DynamoDB data to aws_current_state.json"
+        cat aws_current_state.json
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Process JSON data
+      run: |
+        pip install pandas
+        python -c "
+        import pandas as pd
+        import json
+
+        with open('aws_current_state.json') as f:
+            data = json.load(f)
+
+        df = pd.DataFrame(data)
+        df['donation_date'] = pd.to_datetime(df['donation_date'])
+        df.to_csv('donation_data.csv', index=False)
+        "
+
+    - name: Upload processed data
+      uses: actions/upload-artifact@v4
+      with:
+        name: donation-data
+        path: donation_data.csv
