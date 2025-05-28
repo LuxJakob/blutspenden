@@ -12,6 +12,12 @@ Public Module ParseCSV
         End If
         Dim records As New List(Of HealthRecord)()
 
+        Using reader As New StreamReader(healthFile)
+            While Not reader.EndOfStream
+                Console.WriteLine(reader.ReadLine())
+            End While
+        End Using
+
         Try
             Using parser As New TextFieldParser(healthFile)
                 parser.TextFieldType = FieldType.Delimited

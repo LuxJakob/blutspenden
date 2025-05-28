@@ -1,5 +1,6 @@
 ﻿Imports System.Text.Json
 Imports System.IO
+Imports System.Text.Json.Serialization
 
 Public Module ETL
     Public Sub ETLforJSON(healthData As List(Of HealthRecord))
@@ -7,7 +8,8 @@ Public Module ETL
         Dim options As New JsonSerializerOptions With {
             .WriteIndented = True,
             .PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-            .IgnoreReadOnlyProperties = True
+            .IgnoreReadOnlyProperties = True,
+            .DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
         }
         Dim json As String = JsonSerializer.Serialize(healthData, options)
 

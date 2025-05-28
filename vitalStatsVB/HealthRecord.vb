@@ -21,7 +21,7 @@ Public Class HealthRecord
     <JsonPropertyName("hemoglobin")>
     Public Property Hemoglobin As Double
 
-    <JsonIgnore>
+    <JsonPropertyName("blood_pressure")>
     Public Property BloodPressure As String
 
     <JsonPropertyName("blood_pressure_upper")>
