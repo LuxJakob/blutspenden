@@ -1,0 +1,22 @@
+{
+  "title": "Blood Donations",
+  "panels": [
+    {
+      "title": "Donation Timeline",
+      "type": "timeseries",
+      "datasource": "JSON API",
+      "targets": [
+        {
+          "expr": "$.[*].[\"donation_date\",\"amount_donated_ml\"]",
+          "format": "table",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ml"
+        }
+      }
+    }
+  ]
+}

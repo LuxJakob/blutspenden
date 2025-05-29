@@ -1,0 +1,134 @@
+[
+  {
+    "amount_donated_ml": 849,
+    "donation_date": "2024-11-20T00:00:00",
+    "weight_kg": 85.1,
+    "donation_type": "plasma",
+    "hemoglobin": 14.5,
+    "blood_pressure_upper": 136,
+    "pulse": 92,
+    "temperature": 35,
+    "blood_pressure_lower": 85
+  },
+  {
+    "amount_donated_ml": 850,
+    "donation_date": "2024-12-13T00:00:00",
+    "weight_kg": 86.2,
+    "donation_type": "plasma",
+    "hemoglobin": 15.4,
+    "blood_pressure_upper": 132,
+    "pulse": 70,
+    "temperature": 36.4,
+    "blood_pressure_lower": 75
+  },
+  {
+    "amount_donated_ml": 850,
+    "donation_date": "2025-01-21T00:00:00",
+    "weight_kg": 84.9,
+    "donation_type": "plasma",
+    "hemoglobin": 14.3,
+    "blood_pressure_upper": 130,
+    "pulse": 78,
+    "temperature": 36.4,
+    "blood_pressure_lower": 81
+  },
+  {
+    "amount_donated_ml": 850,
+    "donation_date": "2025-01-09T00:00:00",
+    "weight_kg": 86.3,
+    "donation_type": "plasma",
+    "hemoglobin": 14.4,
+    "blood_pressure_upper": 129,
+    "pulse": 89,
+    "temperature": 35,
+    "blood_pressure_lower": 88
+  },
+  {
+    "amount_donated_ml": 852,
+    "donation_date": "2025-01-31T00:00:00",
+    "weight_kg": 85.1,
+    "donation_type": "plasma",
+    "hemoglobin": 13.8,
+    "blood_pressure_upper": 147,
+    "pulse": 78,
+    "temperature": 36.2,
+    "blood_pressure_lower": 83
+  },
+  {
+    "amount_donated_ml": 850,
+    "donation_date": "2024-12-10T00:00:00",
+    "weight_kg": 85.9,
+    "donation_type": "plasma",
+    "hemoglobin": 15.1,
+    "blood_pressure_upper": 143,
+    "pulse": 84,
+    "temperature": 35.3,
+    "blood_pressure_lower": 83
+  },
+  {
+    "amount_donated_ml": 857,
+    "donation_date": "2025-02-03T00:00:00",
+    "weight_kg": 84.6,
+    "donation_type": "plasma",
+    "hemoglobin": 15.3,
+    "blood_pressure_upper": 144,
+    "pulse": 74,
+    "temperature": 36.1,
+    "blood_pressure_lower": 88
+  },
+  {
+    "amount_donated_ml": 850,
+    "donation_date": "2025-01-13T00:00:00",
+    "weight_kg": 85.6,
+    "donation_type": "plasma",
+    "hemoglobin": 15.3,
+    "blood_pressure_upper": 132,
+    "pulse": 58,
+    "temperature": 36.3,
+    "blood_pressure_lower": 83
+  },
+  {
+    "amount_donated_ml": 849,
+    "donation_date": "2024-11-25T00:00:00",
+    "weight_kg": 85.4,
+    "donation_type": "plasma",
+    "hemoglobin": 15.3,
+    "blood_pressure_upper": 126,
+    "pulse": 55,
+    "temperature": 35.7,
+    "blood_pressure_lower": 80
+  },
+  {
+    "amount_donated_ml": 849,
+    "donation_date": "2024-11-06T00:00:00",
+    "weight_kg": 85.6,
+    "donation_type": "plasma",
+    "hemoglobin": 14.4,
+    "blood_pressure_upper": 133,
+    "pulse": 68,
+    "temperature": 35.5,
+    "blood_pressure_lower": 83
+  },
+  {
+    "amount_donated_ml": 850,
+    "donation_date": "2025-01-28T00:00:00",
+    "weight_kg": 84.2,
+    "donation_type": "plasma",
+    "hemoglobin": 15,
+    "blood_pressure_upper": 142,
+    "pulse": 97,
+    "temperature": 36,
+    "blood_pressure_lower": 94
+  },
+  {
+    "amount_donated_ml": 850,
+    "donation_date": "2024-12-05T00:00:00",
+    "weight_kg": 84.6,
+    "donation_type": "plasma",
+    "hemoglobin": 14.2,
+    "blood_pressure_upper": 138,
+    "pulse": 58,
+    "temperature": 35.1,
+    "blood_pressure_lower": 85
+  }
+]

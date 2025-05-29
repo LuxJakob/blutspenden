@@ -1,50 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blood Donation Dashboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/grafana-dashboard@latest/dist/grafana-dashboard.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/grafana-dashboard@latest/dist/grafana-dashboard.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .dashboard-container {
+            width: 100%;
+            height: 800px;
+            border: 1px solid #ddd;
+        }
+    </style>
 </head>
 <body>
-    <div id="dashboard" style="width: 100%; height: 100vh;"></div>
-    <script>
-        fetch('data.json')
-            .then(response => response.json())
-            .then(data => {
-                const dashboard = new GrafanaDashboard({
-                    target: document.getElementById('dashboard'),
-                    dashboard: {
-                        title: "Blood Donation Dashboard",
-                        panels: [
-                            {
-                                title: "Donation Amount Over Time",
-                                type: "timeseries",
-                                datasource: { type: "inline", data: data },
-                                options: {
-                                    fieldConfig: {
-                                        defaults: {
-                                            unit: "ml"
-                                        }
-                                    }
-                                }
-                            },
-                            {
-                                title: "Weight vs Donation Amount",
-                                type: "xy-chart",
-                                datasource: { type: "inline", data: data },
-                                options: {
-                                    fieldConfig: {
-                                        defaults: {
-                                            unit: "ml"
-                                        }
-                                    }
-                                }
-                            }
-                        ]
-                    }
-                });
-                dashboard.render();
-            });
-    </script>
+    <h1>My Blood Donation History</h1>
+    <div class="dashboard-container">
+        <iframe 
+            src="https://your-grafana-instance.com/d/your-dashboard-uid" 
+            width="100%" 
+            height="100%" 
+            frameborder="0">
+        </iframe>
+    </div>
 </body>
 </html>

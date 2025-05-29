@@ -26,12 +26,14 @@ jobs:
         fi
         
         body_content=$(echo "$response" | jq -r '.body')
-        echo "$body_content" | jq . > donation_data.json
-        
-        echo "filename=donation_data.json" >> $GITHUB_OUTPUT
+        mkdir -p docs
+        echo "$body_content" | jq . > docs/donation_data.json
+        echo "filename=docs/donation_data.json" >> $GITHUB_OUTPUT
 
-    - name: Upload processed data
-      uses: actions/upload-artifact@v4
-      with:
-        name: donation-data
-        path: donation_data.json
+    - name: Commit and push
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git add docs/donation_data.json
+        git commit -m "Update donation data $(date +'%Y-%m-%d')"
+        git push
