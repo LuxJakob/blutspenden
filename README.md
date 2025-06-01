@@ -1,6 +1,6 @@
 # vitalStatsVB
 
-A Visual Basic project to parse health data from CSV files, visualize it with (? - TBD), and automate a bit with GitHub Actions.
+A Visual Basic project to track my blood donations, store the data in AWS, and visualize it in Grafana — partially automated with GitHub Actions.
 
 <!--
 HEALTHDATA:
