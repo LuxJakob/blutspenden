@@ -72,7 +72,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               },
               {
                 "color": "red",
@@ -117,7 +118,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.1.0-88106",
+      "pluginVersion": "12.1.0-89256.patch1-89350",
       "targets": [
         {
           "columns": [
@@ -206,7 +207,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               },
               {
                 "color": "red",
@@ -237,7 +239,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.1.0-88106",
+      "pluginVersion": "12.1.0-89256.patch1-89350",
       "targets": [
         {
           "columns": [
@@ -319,6 +321,8 @@
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
+            "axisSoftMax": 160,
+            "axisSoftMin": 60,
             "barAlignment": 0,
             "barWidthFactor": 0.6,
             "drawStyle": "line",
@@ -351,7 +355,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               },
               {
                 "color": "red",
@@ -382,7 +387,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.1.0-88106",
+      "pluginVersion": "12.1.0-89256.patch1-89350",
       "targets": [
         {
           "columns": [
@@ -468,5 +473,5 @@
   "timezone": "Europe/Berlin",
   "title": "Blood Donation Tracker",
   "uid": "06ca1158-6874-4997-b729-d96cedf0571b",
-  "version": 30
+  "version": 35
 }
