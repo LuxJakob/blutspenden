@@ -284,7 +284,7 @@
             },
             {
               "selector": "average_hemoglobin",
-              "text": "AVG",
+              "text": "Hemoglobin(avg)",
               "type": "number"
             }
           ],
@@ -306,6 +306,44 @@
             "data": "",
             "method": "GET"
           }
+        },
+        {
+          "columns": [
+            {
+              "selector": "donation_date",
+              "text": "Date",
+              "timestampFormat": "2006-01-02",
+              "type": "timestamp"
+            },
+            {
+              "selector": "hemoglobin_max",
+              "text": "Hemoglobin(max)",
+              "type": "number"
+            },
+            {
+              "selector": "hemoglobin_min",
+              "text": "Hemoglobin(min)",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "aeoltgrw6xeyoa"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "hide": false,
+          "parser": "backend",
+          "refId": "C",
+          "root_selector": "$.body",
+          "source": "url",
+          "type": "json",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
         }
       ],
       "title": "Hemoglobin Level",
@@ -313,8 +351,8 @@
     },
     {
       "datasource": {
-        "type": "yesoreyeram-infinity-datasource",
-        "uid": "aenmhzftt4wsgc"
+        "type": "datasource",
+        "uid": "-- Mixed --"
       },
       "fieldConfig": {
         "defaults": {
@@ -407,6 +445,11 @@
               "selector": "blood_pressure_upper",
               "text": "Systolic",
               "type": "number"
+            },
+            {
+              "selector": "blood_pressure_lower",
+              "text": "Diastolic",
+              "type": "number"
             }
           ],
           "datasource": {
@@ -436,14 +479,19 @@
               "type": "timestamp"
             },
             {
-              "selector": "blood_pressure_lower",
-              "text": "Diastolic",
+              "selector": "average_blood_pressure_lower",
+              "text": "Diastolic(avg)",
+              "type": "number"
+            },
+            {
+              "selector": "average_blood_pressure_upper",
+              "text": "Systolic(avg)",
               "type": "number"
             }
           ],
           "datasource": {
             "type": "yesoreyeram-infinity-datasource",
-            "uid": "aenmhzftt4wsgc"
+            "uid": "fenye1385bncwb"
           },
           "filters": [],
           "format": "table",
@@ -459,6 +507,54 @@
             "data": "",
             "method": "GET"
           }
+        },
+        {
+          "columns": [
+            {
+              "selector": "donation_date",
+              "text": "Date",
+              "timestampFormat": "2006-01-02",
+              "type": "timestamp"
+            },
+            {
+              "selector": "blood_pressure_lower_max",
+              "text": "BP Lower(max)",
+              "type": "number"
+            },
+            {
+              "selector": "blood_pressure_lower_min",
+              "text": "BP Lower(min)",
+              "type": "number"
+            },
+            {
+              "selector": "blood_pressure_upper_max",
+              "text": "BP Upper(max)",
+              "type": "number"
+            },
+            {
+              "selector": "blood_pressure_upper_min",
+              "text": "BP Upper(min)",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "aeoltgrw6xeyoa"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "hide": true,
+          "parser": "backend",
+          "refId": "C",
+          "root_selector": "$.body",
+          "source": "url",
+          "type": "json",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
         }
       ],
       "title": "Blood Pressure",
@@ -466,8 +562,8 @@
     },
     {
       "datasource": {
-        "type": "yesoreyeram-infinity-datasource",
-        "uid": "aenmhzftt4wsgc"
+        "type": "datasource",
+        "uid": "-- Mixed --"
       },
       "fieldConfig": {
         "defaults": {
@@ -480,7 +576,7 @@
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
-            "axisSoftMax": 100,
+            "axisSoftMax": 110,
             "axisSoftMin": 50,
             "barAlignment": 0,
             "barWidthFactor": 0.6,
@@ -579,6 +675,77 @@
             "data": "",
             "method": "GET"
           }
+        },
+        {
+          "columns": [
+            {
+              "selector": "donation_date",
+              "text": "Date",
+              "timestampFormat": "2006-01-02",
+              "type": "timestamp"
+            },
+            {
+              "selector": "average_pulse",
+              "text": "Pulse(avg)",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "fenye1385bncwb"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "hide": false,
+          "parser": "backend",
+          "refId": "B",
+          "root_selector": "$.body",
+          "source": "url",
+          "type": "json",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        },
+        {
+          "columns": [
+            {
+              "selector": "donation_date",
+              "text": "Date",
+              "timestampFormat": "2006-01-02",
+              "type": "timestamp"
+            },
+            {
+              "selector": "pulse_max",
+              "text": "Pulse(max)",
+              "type": "number"
+            },
+            {
+              "selector": "pulse_min",
+              "text": "Pulse(min)",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "aeoltgrw6xeyoa"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "hide": false,
+          "parser": "backend",
+          "refId": "C",
+          "root_selector": "$.body",
+          "source": "url",
+          "type": "json",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
         }
       ],
       "title": "Pulse Level",
@@ -599,5 +766,5 @@
   "timezone": "Europe/Berlin",
   "title": "Blood Donation Tracker",
   "uid": "06ca1158-6874-4997-b729-d96cedf0571b",
-  "version": 39
+  "version": 45
 }
