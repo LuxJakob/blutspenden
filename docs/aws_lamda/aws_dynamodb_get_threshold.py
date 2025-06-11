@@ -1,7 +1,7 @@
-import json
 import boto3
-from decimal import Decimal
+import json
 from boto3.dynamodb.conditions import Key
+from decimal import Decimal
 
 dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table('vitalStatsVB')
@@ -29,15 +29,20 @@ def get_thresholds(items):
     if not items:
         return {}
 
-    donation_dates = []
+    thresholds = []
     for item in items:
-        donation_dates.append(item.get('donation_date', 0))
-
-    averages = []
-    for date in donation_dates:
-        averages.append({
-            'donation_date': date
+        thresholds.append({
+            'donation_date': item.get('donation_date', 0),
+            'pulse_max': 100,
+            'pulse_min': 60,
+            'temperature_max': 37.5,
+            'temperature_min': 36.1,
+            'blood_pressure_lower_max': 80,
+            'blood_pressure_lower_min': 60,
+            'blood_pressure_upper_max': 120,
+            'blood_pressure_upper_min': 90,
+            'hemoglobin_max': 17.5,
+            'hemoglobin_min': 13
         })
 
-
-    return 'test'
+    return thresholds

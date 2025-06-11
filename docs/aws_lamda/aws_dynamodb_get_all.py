@@ -1,7 +1,7 @@
-import json
 import boto3
-from decimal import Decimal
+import json
 from boto3.dynamodb.conditions import Key
+from decimal import Decimal
 
 dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table('vitalStatsVB')
