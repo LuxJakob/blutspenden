@@ -277,8 +277,14 @@
         {
           "columns": [
             {
+              "selector": "donation_date",
+              "text": "Date",
+              "timestampFormat": "2006-01-02",
+              "type": "timestamp"
+            },
+            {
               "selector": "average_hemoglobin",
-              "text": "",
+              "text": "AVG",
               "type": "number"
             }
           ],
@@ -593,5 +599,5 @@
   "timezone": "Europe/Berlin",
   "title": "Blood Donation Tracker",
   "uid": "06ca1158-6874-4997-b729-d96cedf0571b",
-  "version": 38
+  "version": 39
 }

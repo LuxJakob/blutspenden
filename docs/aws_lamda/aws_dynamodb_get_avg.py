@@ -10,6 +10,7 @@ def calculate_averages(items):
     if not items:
         return {}
 
+    donation_dates = []
     totals = {
         'weight_kg': 0,
         'amount_donated_ml': 0,
@@ -22,6 +23,7 @@ def calculate_averages(items):
     }
 
     for item in items:
+        donation_dates.append(item.get('donation_date', 0))
         totals['weight_kg'] += item.get('weight_kg', 0)
         totals['amount_donated_ml'] += item.get('amount_donated_ml', 0)
         totals['pulse'] += item.get('pulse', 0)
@@ -30,16 +32,18 @@ def calculate_averages(items):
         totals['blood_pressure_upper'] += item.get('blood_pressure_upper', 0)
         totals['hemoglobin'] += item.get('hemoglobin', 0)
 
-    averages = {
-        'average_weight_kg': round(totals['weight_kg'] / totals['count'], 2),
-        'average_amount_donated_ml': round(totals['amount_donated_ml'] / totals['count']),
-        'average_pulse': round(totals['pulse'] / totals['count']),
-        'average_temperature': round(totals['temperature'] / totals['count'], 2),
-        'average_blood_pressure_lower': round(totals['blood_pressure_lower'] / totals['count']),
-        'average_blood_pressure_upper': round(totals['blood_pressure_upper'] / totals['count']),
-        'average_hemoglobin': round(totals['hemoglobin'] / totals['count'], 2),
-        'total_donations': totals['count']
-    }
+    averages = []
+    for date in donation_dates:
+        averages.append({
+            'donation_date': date,
+            'average_weight_kg': round(totals['weight_kg'] / totals['count'], 2),
+            'average_amount_donated_ml': round(totals['amount_donated_ml'] / totals['count']),
+            'average_pulse': round(totals['pulse'] / totals['count']),
+            'average_temperature': round(totals['temperature'] / totals['count'], 2),
+            'average_blood_pressure_lower': round(totals['blood_pressure_lower'] / totals['count']),
+            'average_blood_pressure_upper': round(totals['blood_pressure_upper'] / totals['count']),
+            'average_hemoglobin': round(totals['hemoglobin'] / totals['count'], 2)
+        })
 
     return averages
 
