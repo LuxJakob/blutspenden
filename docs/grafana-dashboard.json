@@ -347,11 +347,6 @@
               "type": "timestamp"
             },
             {
-              "selector": "hemoglobin_max",
-              "text": "Hemoglobin(max)",
-              "type": "number"
-            },
-            {
               "selector": "hemoglobin_min",
               "text": "Hemoglobin(min)",
               "type": "number"
@@ -659,18 +654,8 @@
               "type": "number"
             },
             {
-              "selector": "blood_pressure_lower_min",
-              "text": "BP Lower(min)",
-              "type": "number"
-            },
-            {
               "selector": "blood_pressure_upper_max",
               "text": "BP Upper(max)",
-              "type": "number"
-            },
-            {
-              "selector": "blood_pressure_upper_min",
-              "text": "BP Upper(min)",
               "type": "number"
             }
           ],
@@ -889,11 +874,6 @@
               "selector": "pulse_max",
               "text": "Pulse(max)",
               "type": "number"
-            },
-            {
-              "selector": "pulse_min",
-              "text": "Pulse(min)",
-              "type": "number"
             }
           ],
           "datasource": {
@@ -934,5 +914,5 @@
   "timezone": "Europe/Berlin",
   "title": "Blood Donation Tracker",
   "uid": "06ca1158-6874-4997-b729-d96cedf0571b",
-  "version": 48
+  "version": 49
 }
