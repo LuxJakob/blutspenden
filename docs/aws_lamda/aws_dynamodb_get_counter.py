@@ -13,7 +13,6 @@ def calculate_totals(items):
 
     blood_counter = 0
     plasma_counter = 0
-    max_blood_donations = 6
     current_year = datetime.today().year
 
     for item in items:
@@ -26,7 +25,8 @@ def calculate_totals(items):
             if item.get('donation_type', 0) == 'plasma':
                 plasma_counter += 1
 
-    max_plasma_donations = 60 - blood_counter
+    max_plasma_donations = 60 - blood_counter - plasma_counter
+    max_blood_donations = 6 - blood_counter
     donation_times = blood_counter + plasma_counter
 
     totals = {

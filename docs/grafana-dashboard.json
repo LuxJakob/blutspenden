@@ -80,7 +80,7 @@
               {
                 "id": "color",
                 "value": {
-                  "fixedColor": "text",
+                  "fixedColor": "super-light-blue",
                   "mode": "fixed"
                 }
               }
@@ -96,6 +96,9 @@
       },
       "id": 5,
       "options": {
+        "displayLabels": [
+          "value"
+        ],
         "legend": {
           "displayMode": "list",
           "placement": "bottom",
@@ -211,7 +214,7 @@
               {
                 "id": "color",
                 "value": {
-                  "fixedColor": "text",
+                  "fixedColor": "super-light-blue",
                   "mode": "fixed"
                 }
               }
@@ -227,6 +230,9 @@
       },
       "id": 6,
       "options": {
+        "displayLabels": [
+          "value"
+        ],
         "legend": {
           "displayMode": "list",
           "placement": "bottom",
@@ -1042,8 +1048,8 @@
             "axisGridShow": true,
             "axisLabel": "Amount donated",
             "axisPlacement": "left",
-            "axisSoftMax": 870,
-            "axisSoftMin": 450,
+            "axisSoftMax": 1000,
+            "axisSoftMin": 0,
             "barAlignment": 0,
             "barWidthFactor": 0.6,
             "drawStyle": "bars",
@@ -1176,5 +1182,5 @@
   "timezone": "Europe/Berlin",
   "title": "Blood Donation Tracker",
   "uid": "06ca1158-6874-4997-b729-d96cedf0571b",
-  "version": 54
+  "version": 56
 }
