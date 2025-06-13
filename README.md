@@ -9,9 +9,7 @@ HEALTHDATA:
     "donation_date": "2025-04-25",
     "donation_type": "blood",
     "weight_kg": 85.1,
-    "amount_donated_ml": 850,
-    "blood_pressure": "137/76",
-    "pulse": 84,
+    "amount_donated_ml": 500,
     "temperature": 36.2,
     "hemoglobin": 14
   }
