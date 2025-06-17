@@ -42,7 +42,7 @@ def get_thresholds(items):
             'blood_pressure_upper_max': 120,
             'blood_pressure_upper_min': 90,
             'hemoglobin_max': 17.5,
-            'hemoglobin_min': 13
+            'hemoglobin_min': 13.5
         })
 
     return thresholds
