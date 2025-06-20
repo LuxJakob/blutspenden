@@ -89,7 +89,7 @@
         ]
       },
       "gridPos": {
-        "h": 10,
+        "h": 8,
         "w": 6,
         "x": 0,
         "y": 0
@@ -118,7 +118,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.1.0-89438",
+      "pluginVersion": "12.1.0-89781",
       "targets": [
         {
           "columns": [
@@ -223,7 +223,7 @@
         ]
       },
       "gridPos": {
-        "h": 10,
+        "h": 8,
         "w": 6,
         "x": 6,
         "y": 0
@@ -252,7 +252,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.1.0-89438",
+      "pluginVersion": "12.1.0-89781",
       "targets": [
         {
           "columns": [
@@ -291,48 +291,13 @@
     },
     {
       "datasource": {
-        "type": "datasource",
-        "uid": "-- Mixed --"
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "aeot07wwwo1z4f"
       },
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "axisSoftMax": 20,
-            "axisSoftMin": 10,
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
+            "mode": "thresholds"
           },
           "mappings": [],
           "thresholds": {
@@ -347,85 +312,52 @@
                 "value": 80
               }
             ]
-          }
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "C Hemoglobin(min)"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "dark-red",
-                  "mode": "fixed"
-                }
-              }
-            ]
           },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "C Hemoglobin(max)"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "dark-red",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          }
-        ]
+          "unit": "litre"
+        },
+        "overrides": []
       },
       "gridPos": {
-        "h": 10,
+        "h": 8,
         "w": 12,
         "x": 12,
         "y": 0
       },
-      "id": 2,
+      "id": 7,
       "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
         },
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "single",
-          "sort": "none"
-        }
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "12.1.0-89438",
+      "pluginVersion": "12.1.0-89781",
       "targets": [
         {
           "columns": [
             {
-              "selector": "donation_date",
-              "text": "Date",
-              "timestampFormat": "2006-01-02",
-              "type": "timestamp"
-            },
-            {
-              "selector": "hemoglobin",
-              "text": "Hemoglobin",
+              "selector": "total_litres",
+              "text": "Total Amount",
               "type": "number"
             }
           ],
           "datasource": {
             "type": "yesoreyeram-infinity-datasource",
-            "uid": "aenmhzftt4wsgc"
+            "uid": "aeot07wwwo1z4f"
           },
           "filters": [],
           "format": "table",
           "global_query_id": "",
-          "hide": false,
           "parser": "backend",
           "refId": "A",
           "root_selector": "$.body",
@@ -436,76 +368,10 @@
             "data": "",
             "method": "GET"
           }
-        },
-        {
-          "columns": [
-            {
-              "selector": "donation_date",
-              "text": "Date",
-              "timestampFormat": "2006-01-02",
-              "type": "timestamp"
-            },
-            {
-              "selector": "average_hemoglobin",
-              "text": "Hemoglobin(avg)",
-              "type": "number"
-            }
-          ],
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "fenye1385bncwb"
-          },
-          "filters": [],
-          "format": "table",
-          "global_query_id": "",
-          "hide": false,
-          "parser": "backend",
-          "refId": "B",
-          "root_selector": "$.body",
-          "source": "url",
-          "type": "json",
-          "url": "",
-          "url_options": {
-            "data": "",
-            "method": "GET"
-          }
-        },
-        {
-          "columns": [
-            {
-              "selector": "donation_date",
-              "text": "Date",
-              "timestampFormat": "2006-01-02",
-              "type": "timestamp"
-            },
-            {
-              "selector": "hemoglobin_min",
-              "text": "Hemoglobin(min)",
-              "type": "number"
-            }
-          ],
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "aeoltgrw6xeyoa"
-          },
-          "filters": [],
-          "format": "table",
-          "global_query_id": "",
-          "hide": false,
-          "parser": "backend",
-          "refId": "C",
-          "root_selector": "$.body",
-          "source": "url",
-          "type": "json",
-          "url": "",
-          "url_options": {
-            "data": "",
-            "method": "GET"
-          }
         }
       ],
-      "title": "Hemoglobin Level",
-      "type": "timeseries"
+      "title": "Total Amount",
+      "type": "stat"
     },
     {
       "datasource": {
@@ -565,7 +431,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "mmHg"
         },
         "overrides": [
           {
@@ -679,7 +546,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 10
+        "y": 8
       },
       "id": 3,
       "options": {
@@ -695,7 +562,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.1.0-89438",
+      "pluginVersion": "12.1.0-89781",
       "targets": [
         {
           "columns": [
@@ -830,6 +697,225 @@
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
+            "axisSoftMax": 20,
+            "axisSoftMin": 10,
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "g/dl"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "C Hemoglobin(min)"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "C Hemoglobin(max)"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.1.0-89781",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "donation_date",
+              "text": "Date",
+              "timestampFormat": "2006-01-02",
+              "type": "timestamp"
+            },
+            {
+              "selector": "hemoglobin",
+              "text": "Hemoglobin",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "aenmhzftt4wsgc"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "hide": false,
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "$.body",
+          "source": "url",
+          "type": "json",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        },
+        {
+          "columns": [
+            {
+              "selector": "donation_date",
+              "text": "Date",
+              "timestampFormat": "2006-01-02",
+              "type": "timestamp"
+            },
+            {
+              "selector": "average_hemoglobin",
+              "text": "Hemoglobin(avg)",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "fenye1385bncwb"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "hide": false,
+          "parser": "backend",
+          "refId": "B",
+          "root_selector": "$.body",
+          "source": "url",
+          "type": "json",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        },
+        {
+          "columns": [
+            {
+              "selector": "donation_date",
+              "text": "Date",
+              "timestampFormat": "2006-01-02",
+              "type": "timestamp"
+            },
+            {
+              "selector": "hemoglobin_min",
+              "text": "Hemoglobin(min)",
+              "type": "number"
+            }
+          ],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "aeoltgrw6xeyoa"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "hide": false,
+          "parser": "backend",
+          "refId": "C",
+          "root_selector": "$.body",
+          "source": "url",
+          "type": "json",
+          "url": "",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "Hemoglobin Level",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
             "axisSoftMax": 110,
             "axisSoftMin": 50,
             "barAlignment": 0,
@@ -872,7 +958,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "bpm"
         },
         "overrides": [
           {
@@ -910,8 +997,8 @@
       "gridPos": {
         "h": 8,
         "w": 12,
-        "x": 12,
-        "y": 10
+        "x": 0,
+        "y": 16
       },
       "id": 4,
       "options": {
@@ -927,7 +1014,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.1.0-89438",
+      "pluginVersion": "12.1.0-89781",
       "targets": [
         {
           "columns": [
@@ -1111,8 +1198,8 @@
       "gridPos": {
         "h": 8,
         "w": 12,
-        "x": 0,
-        "y": 18
+        "x": 12,
+        "y": 16
       },
       "id": 1,
       "options": {
@@ -1128,7 +1215,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.1.0-89438",
+      "pluginVersion": "12.1.0-89781",
       "targets": [
         {
           "columns": [
@@ -1182,5 +1269,5 @@
   "timezone": "Europe/Berlin",
   "title": "Blood Donation Tracker",
   "uid": "06ca1158-6874-4997-b729-d96cedf0571b",
-  "version": 56
+  "version": 59
 }
