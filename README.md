@@ -6,14 +6,14 @@ A Visual Basic project to track my blood donations, store the data in AWS, and v
 HEALTHDATA:
 [
   {
-    "donation_date": "2025-11-12",
-    "donation_type": "plasma",
+    "donation_date": "2025-12-16",
+    "donation_type": "blood",
     "weight_kg": 83,
-    "amount_donated_ml": 745,
-    "blood_pressure": "124/79",
-    "pulse": 62,
+    "amount_donated_ml": 500,
+    "blood_pressure": "139/96",
+    "pulse": 64,
     "temperature": 36.4,
-    "hemoglobin": 14.7
+    "hemoglobin": 15.3
   }
 ]
 -->
