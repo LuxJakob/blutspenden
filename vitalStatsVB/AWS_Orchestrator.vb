@@ -1,8 +1,8 @@
 ﻿Imports Newtonsoft.Json.Linq
 Imports System.IO
 
-Module Orchestrator
-    Sub Main(args As String())
+Module AWS_Orchestrator
+    Sub AWS_Orchestrator
         Console.WriteLine("Starting...")
 
         Try
