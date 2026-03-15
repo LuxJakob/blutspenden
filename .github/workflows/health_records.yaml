@@ -6,7 +6,9 @@ jobs:
   sync-data:
     runs-on: windows-latest
     env:
-      SUPABASE_CONNECTION: ${{ secrets.SUPABASE_CONNECTION }}
+      SUPABASE_HOST: ${{ secrets.SUPABASE_HOST }}
+      SUPABASE_USER: ${{ secrets.SUPABASE_USER }}
+      SUPABASE_PASS: ${{ secrets.SUPABASE_PASS }}
 
     steps:
     - uses: actions/checkout@v4

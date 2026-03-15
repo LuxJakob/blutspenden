@@ -1,6 +1,5 @@
 Imports System.IO
 Imports System.Text.Json
-Imports System.Text.RegularExpressions
 Imports Npgsql
 
 Module Program
@@ -19,49 +18,91 @@ Module Program
         Console.WriteLine("Starting Supabase Sync...")
 
         ' --- STEP 1:  Read the README.md file
-        Dim readmePath = "README.md"
+        Dim readmePath = Path.Combine(AppContext.BaseDirectory, "README.md")
+        Console.WriteLine($"Looking for README at: {readmePath}")
+
         If Not File.Exists(readmePath) Then
-            Console.WriteLine("Error: README.md not found!")
+            Console.WriteLine("Error: README.md not found in output directory!")
             Return
         End If
+        
         Dim content = File.ReadAllText(readmePath)
         
         ' --- STEP 2: Extract the hidden JSON block using Regex
-        Dim pattern = ""
-        Dim match = Regex.Match(content, pattern, RegexOptions.Singleline)
+        Dim startMarker = "HEALTHDATA:"
+        Dim endMarker = "-->"
         
-        If Not match.Success Then
-            Console.WriteLine("Error: Could not find HEALTHDATA block in README.")
+        Dim startIndex = content.IndexOf(startMarker)
+        If startIndex = -1 Then
+            Console.WriteLine("Error: Could not find 'HEALTHDATA:' marker.")
             Return
         End If
         
+        Dim endIndex = content.IndexOf(endMarker, startIndex)
+        If endIndex = -1 Then
+            Console.WriteLine("Error: Could not find closing '-->' marker.")
+            Return
+        End If
+        
+        ' Find the exact array brackets inside that block
+        Dim jsonStart = content.IndexOf("["c, startIndex)
+        Dim jsonEnd = content.LastIndexOf("]"c, endIndex)
+        
+        If jsonStart = -1 Or jsonEnd = -1 Or jsonStart > endIndex Then
+            Console.WriteLine("Error: Could not find JSON array brackets [...] inside the HEALTHDATA block.")
+            Return
+        End If
+        
+        ' Extract exactly from '[' to ']'
+        Dim jsonString = content.Substring(jsonStart, jsonEnd - jsonStart + 1)
+        
+        Console.WriteLine($"Extracted JSON length: {jsonString.Length} characters. Attempting native parse...")
+        
         ' --- STEP 3: Parse the JSON
-        Dim jsonString = match.Groups(1).Value
         Dim options As New JsonSerializerOptions With {
             .PropertyNameCaseInsensitive = True
         }
-        Dim records = JsonSerializer.Deserialize(Of List(Of HealthRecord))(jsonString, options)
-        Console.WriteLine($"Found {records.Count} records in README.")
+        
+        Dim records As List(Of HealthRecord)
+        Try
+            records = JsonSerializer.Deserialize(Of List(Of HealthRecord))(jsonString, options)
+            Console.WriteLine($"Found {records.Count} records in README.")
+        Catch ex As JsonException
+            Console.WriteLine("CRITICAL JSON ERROR: System.Text.Json rejected the format.")
+            Console.WriteLine($"Raw string we tried to parse: {jsonString}")
+            Console.WriteLine($"Exception: {ex.Message}")
+            Return
+        End Try
         
         ' --- STEP 4: Connect to Supabase
-        Dim connString = Environment.GetEnvironmentVariable("SUPABASE_CONNECTION")
-        If String.IsNullOrEmpty(connString) Then
-            Console.WriteLine("Error: Missing SUPABASE_CONNECTION environment variable.")
+        Dim host = Environment.GetEnvironmentVariable("SUPABASE_HOST")
+        Dim user = Environment.GetEnvironmentVariable("SUPABASE_USER")
+        Dim pass = Environment.GetEnvironmentVariable("SUPABASE_PASS")
+
+        If String.IsNullOrEmpty(host) OrElse String.IsNullOrEmpty(user) OrElse String.IsNullOrEmpty(pass) Then
+            Console.WriteLine("Error: Missing one or more Supabase environment variables.")
             Return
         End If
 
-        Using conn As New NpgsqlConnection(connString)
+        Dim builder As New NpgsqlConnectionStringBuilder() With {
+            .Host = host,
+            .Port = 6543,
+            .Database = "postgres",
+            .Username = user,
+            .Password = pass,
+            .SslMode = SslMode.Require
+        }
+
+        Using conn As New NpgsqlConnection(builder.ConnectionString)
             conn.Open()
             Console.WriteLine("Connected to Supabase successfully!")
 
         ' --- STEP 5: Insert the records
             For Each rec In records
-                ' Split the "118/77" string into Upper and Lower values
                 Dim bpParts = rec.blood_pressure.Split("/"c)
                 Dim sys = Integer.Parse(bpParts(0))
                 Dim dia = Integer.Parse(bpParts(1))
 
-                ' Parameterized SQL to prevent injection and formatting errors
                 Dim sql = "INSERT INTO vital_stats_main (donation_date, donation_type, weight_kg, amount_donated_ml, blood_pressure_upper, blood_pressure_lower, pulse, temperature, hemoglobin) " &
                           "VALUES (@date, @type, @weight, @amount, @upper, @lower, @pulse, @temp, @hemo)"
                 
@@ -80,8 +121,7 @@ Module Program
                         cmd.ExecuteNonQuery()
                         Console.WriteLine($"SUCCESS: Inserted record for {rec.donation_date}")
                     Catch ex As PostgresException When ex.SqlState = "23505"
-                        ' 23505 is the Postgres code for "Unique Violation"
-                        Console.WriteLine($"SKIPPED: {rec.donation_date} already exists in the database.")
+                        Console.WriteLine($"SKIPPED: {rec.donation_date} already exists.")
                     Catch ex As Exception
                         Console.WriteLine($"ERROR on {rec.donation_date}: {ex.Message}")
                     End Try
